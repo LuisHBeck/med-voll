@@ -1,11 +1,10 @@
-package med.voll.api.address;
+package med.voll.api.JPAs;
 
 import jakarta.persistence.Embeddable;
-import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import med.voll.api.DTOs.AddressData;
 
 @Embeddable
 @Getter
