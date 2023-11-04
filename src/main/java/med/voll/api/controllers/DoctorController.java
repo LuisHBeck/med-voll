@@ -13,6 +13,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.stream.Stream;
+
 
 @RestController
 @RequestMapping("/doctors")
@@ -32,6 +34,11 @@ public class DoctorController {
         return repository.findAllByIsActiveTrue(pagination).map(DoctorListData::new);
     }
 
+    @GetMapping("/{id}")
+    public Stream<DoctorListData> listById(@PathVariable Long id) {
+        return repository.findById(id).stream().map(DoctorListData::new);
+    }
+
     @PutMapping
     @Transactional
     public void update(@RequestBody @Valid DoctorUpdateData data) {
@@ -44,7 +51,5 @@ public class DoctorController {
     public void delete(@PathVariable Long id) {
         var doctor = repository.getReferenceById(id);
         doctor.logicalDeletion();
-//        repository.deleteById(id);
-
     }
 }
