@@ -13,7 +13,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 
 @RestController
 @RequestMapping("/doctors")
@@ -30,7 +29,7 @@ public class DoctorController {
 
     @GetMapping
     public Page<DoctorListData> list(@PageableDefault(size = 10, sort = {"name"}) Pageable pagination) {
-        return repository.findAll(pagination).map(DoctorListData::new);
+        return repository.findAllByIsActiveTrue(pagination).map(DoctorListData::new);
     }
 
     @PutMapping
@@ -38,5 +37,14 @@ public class DoctorController {
     public void update(@RequestBody @Valid DoctorUpdateData data) {
         var doctor = repository.getReferenceById(data.id());
         doctor.updateInformation(data);
+    }
+
+    @DeleteMapping("/{id}")
+    @Transactional
+    public void delete(@PathVariable Long id) {
+        var doctor = repository.getReferenceById(id);
+        doctor.logicalDeletion();
+//        repository.deleteById(id);
+
     }
 }
