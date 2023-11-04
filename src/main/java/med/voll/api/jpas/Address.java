@@ -1,10 +1,10 @@
-package med.voll.api.JPAs;
+package med.voll.api.jpas;
 
 import jakarta.persistence.Embeddable;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import med.voll.api.DTOs.AddressData;
+import med.voll.api.dtos.AddressData;
 
 @Embeddable
 @Getter

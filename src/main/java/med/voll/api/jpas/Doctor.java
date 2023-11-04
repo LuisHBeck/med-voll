@@ -1,11 +1,11 @@
-package med.voll.api.JPAs;
+package med.voll.api.jpas;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import med.voll.api.DTOs.DoctorRegistrationData;
+import med.voll.api.dtos.DoctorRegistrationData;
 import med.voll.api.doctor.Specialty;
 
 @Table(name="Doctors")
