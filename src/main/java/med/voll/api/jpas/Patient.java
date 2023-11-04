@@ -5,7 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import med.voll.api.dtos.PatientRegistrationData;
+import med.voll.api.dtos.patient.PatientRegistrationData;
 
 @Table(name = "Patients")
 @Entity(name = "Patient")

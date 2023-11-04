@@ -5,7 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import med.voll.api.dtos.DoctorRegistrationData;
+import med.voll.api.dtos.doctor.DoctorRegistrationData;
 import med.voll.api.doctor.Specialty;
 
 @Table(name="Doctors")
