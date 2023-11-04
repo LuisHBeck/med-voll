@@ -3,6 +3,7 @@ package med.voll.api.controllers;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import med.voll.api.dtos.doctor.DoctorListData;
+import med.voll.api.dtos.doctor.DoctorUpdateData;
 import med.voll.api.jpas.Doctor;
 import med.voll.api.dtos.doctor.DoctorRegistrationData;
 import med.voll.api.repositories.DoctorRepository;
@@ -30,5 +31,12 @@ public class DoctorController {
     @GetMapping
     public Page<DoctorListData> list(@PageableDefault(size = 10, sort = {"name"}) Pageable pagination) {
         return repository.findAll(pagination).map(DoctorListData::new);
+    }
+
+    @PutMapping
+    @Transactional
+    public void update(@RequestBody @Valid DoctorUpdateData data) {
+        var doctor = repository.getReferenceById(data.id());
+        doctor.updateInformation(data);
     }
 }

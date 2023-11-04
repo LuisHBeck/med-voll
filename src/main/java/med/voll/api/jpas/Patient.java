@@ -6,6 +6,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import med.voll.api.dtos.patient.PatientRegistrationData;
+import med.voll.api.dtos.patient.PatientUpdateData;
 
 @Table(name = "Patients")
 @Entity(name = "Patient")
@@ -32,5 +33,17 @@ public class Patient {
         this.phone = data.phone();
         this.cpf = data.cpf();
         this.address = new Address(data.address());
+    }
+
+    public void updateInformation(PatientUpdateData data) {
+        if (data.name() != null) {
+            this.name = data.name();
+        }
+        if (data.phone() != null) {
+            this.phone = data.phone();
+        }
+        if (data.address() != null) {
+            this.address.updateInformation(data.address());
+        }
     }
 }

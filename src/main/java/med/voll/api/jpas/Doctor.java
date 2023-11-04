@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import med.voll.api.dtos.doctor.DoctorRegistrationData;
 import med.voll.api.doctor.Specialty;
+import med.voll.api.dtos.doctor.DoctorUpdateData;
 
 @Table(name="Doctors")
 @Entity(name="Doctor")
@@ -37,5 +38,17 @@ public class Doctor {
         this.crm = data.crm();
         this.specialty = data.specialty();
         this.address = new Address(data.address());
+    }
+
+    public void updateInformation(DoctorUpdateData data) {
+        if (data.name() != null) {
+            this.name = data.name();
+        }
+        if (data.phone() != null) {
+            this.phone = data.phone();
+        }
+        if (data.address() != null) {
+            this.address.updateInformation(data.address());
+        }
     }
 }
