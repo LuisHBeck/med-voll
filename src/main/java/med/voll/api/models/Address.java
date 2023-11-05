@@ -1,4 +1,4 @@
-package med.voll.api.jpas;
+package med.voll.api.models;
 
 import jakarta.persistence.Embeddable;
 import lombok.AllArgsConstructor;

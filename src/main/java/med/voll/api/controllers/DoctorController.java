@@ -5,7 +5,7 @@ import jakarta.validation.Valid;
 import med.voll.api.dtos.doctor.DoctorDetailingData;
 import med.voll.api.dtos.doctor.DoctorListData;
 import med.voll.api.dtos.doctor.DoctorUpdateData;
-import med.voll.api.jpas.Doctor;
+import med.voll.api.models.Doctor;
 import med.voll.api.dtos.doctor.DoctorRegistrationData;
 import med.voll.api.repositories.DoctorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,8 +15,6 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
-
-import java.util.stream.Stream;
 
 
 @RestController
