@@ -21,8 +21,14 @@ public class Doctor {
     private Long id;
 
     private String name;
+
+    @Column(unique = true)
     private String email;
+
+    @Column(unique = true)
     private String phone;
+
+    @Column(unique = true)
     private String crm;
 
     @Enumerated(EnumType.STRING)
