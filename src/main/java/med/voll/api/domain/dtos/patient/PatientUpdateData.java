@@ -1,6 +1,6 @@
-package med.voll.api.dtos.patient;
+package med.voll.api.domain.dtos.patient;
 
-import med.voll.api.dtos.AddressData;
+import med.voll.api.domain.dtos.AddressData;
 
 public record PatientUpdateData(
         String name,

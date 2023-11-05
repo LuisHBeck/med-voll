@@ -1,7 +1,7 @@
-package med.voll.api.dtos.patient;
+package med.voll.api.domain.dtos.patient;
 
-import med.voll.api.models.Address;
-import med.voll.api.models.Patient;
+import med.voll.api.domain.models.Address;
+import med.voll.api.domain.models.Patient;
 
 public record PatientDetailingData(Long id, String name, String phone, String cpf, Address address) {
     public PatientDetailingData(Patient patient) {
