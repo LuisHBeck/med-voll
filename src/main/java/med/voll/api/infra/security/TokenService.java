@@ -19,6 +19,7 @@ public class TokenService {
 
     public String generateToken(User user) {
         try {
+            System.out.println(secret);
             var algorithm = Algorithm.HMAC256(secret);
             return JWT.create()
                     .withIssuer("API Voll.med")
