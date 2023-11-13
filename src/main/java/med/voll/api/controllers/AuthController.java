@@ -1,7 +1,7 @@
 package med.voll.api.controllers;
 
 import jakarta.validation.Valid;
-import med.voll.api.domain.dtos.user.AuthData;
+import med.voll.api.domain.dtos.user.UserData;
 import med.voll.api.domain.dtos.user.JWTData;
 import med.voll.api.domain.models.User;
 import med.voll.api.infra.security.TokenService;
@@ -25,7 +25,7 @@ public class AuthController {
     private TokenService tokenService;
 
     @PostMapping
-    public ResponseEntity login(@RequestBody @Valid AuthData data) {
+    public ResponseEntity login(@RequestBody @Valid UserData data) {
         var token = new UsernamePasswordAuthenticationToken(data.username(), data.password());
         var authentication = authManager.authenticate(token);
         var tokenJWT = tokenService.generateToken((User) authentication.getPrincipal());
