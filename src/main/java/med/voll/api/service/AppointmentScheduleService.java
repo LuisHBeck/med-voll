@@ -33,9 +33,10 @@ public class AppointmentScheduleService {
     }
 
     private Doctor chooseDoctor(AppointmentScheduleData data) {
-        if (data.doctorId() != null) {
-            return doctorRepository.getReferenceById(data.doctorId());
-        }
+        if(data.doctorId() != null) return doctorRepository.getReferenceById(data.doctorId());
 
+        if (data.specialty() == null) throw new IdValidationException("Specialty field is required!");
+
+        return doctorRepository.chooseRandomDoctorAvailable(data.specialty(), data.date());
     }
 }
