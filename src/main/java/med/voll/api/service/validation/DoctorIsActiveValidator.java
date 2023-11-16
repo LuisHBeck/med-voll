@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 public class DoctorIsActiveValidator {
 
-    @Autowired
     private DoctorRepository repository;
 
     public void valid(AppointmentScheduleData data) {
