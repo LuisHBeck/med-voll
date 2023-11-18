@@ -1,5 +1,6 @@
 package med.voll.api.controllers;
 
+import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import med.voll.api.domain.dtos.appointment.AppointmentCancelData;
 import med.voll.api.domain.dtos.appointment.AppointmentDetailingData;
@@ -21,6 +22,7 @@ public class AppointmentController {
     AppointmentCancelService cancelService;
 
     @PostMapping
+    @Transactional
     public ResponseEntity schedule(@RequestBody @Valid AppointmentScheduleData data) {
         System.out.println(data);
         var appointment = scheduleService.schedule(data);
@@ -28,6 +30,7 @@ public class AppointmentController {
     }
 
     @PostMapping("/cancel")
+    @Transactional
     public ResponseEntity cancel(@RequestBody @Valid AppointmentCancelData data) {
         cancelService.cancel(data);
         return ResponseEntity.noContent().build();

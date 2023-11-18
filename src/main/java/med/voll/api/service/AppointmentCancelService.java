@@ -2,6 +2,7 @@ package med.voll.api.service;
 
 import med.voll.api.domain.dtos.appointment.AppointmentCancelData;
 import med.voll.api.domain.repositories.AppointmentRepository;
+import med.voll.api.infra.exception.ValidException;
 import med.voll.api.service.validation.cancel.AppointmentCancelingValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,6 +19,8 @@ public class AppointmentCancelService {
     private List<AppointmentCancelingValidator> validators;
 
     public void cancel(AppointmentCancelData data) {
+        if(!repository.existsById(data.id())) throw new ValidException("Invalid appointment!");
+
         validators.forEach(v -> v.validate(data));
 
         var appointment = repository.getReferenceById(data.id());
