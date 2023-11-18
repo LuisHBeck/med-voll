@@ -1,16 +1,18 @@
-package med.voll.api.service.validation;
+package med.voll.api.service.validation.schedule;
 
 import med.voll.api.domain.dtos.appointment.AppointmentScheduleData;
 import med.voll.api.domain.repositories.AppointmentRepository;
 import med.voll.api.infra.exception.ValidException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-import java.time.LocalDateTime;
+@Component
+public class PatientWithoutAnotherAppointmentOnTheDay implements AppointmentSchedulingValidator {
 
-public class PatientWithoutAnotherAppointmentOnTheDay {
-
+    @Autowired
     private AppointmentRepository repository;
 
-    public void valid(AppointmentScheduleData data) {
+    public void validate(AppointmentScheduleData data) {
         var appointmentData = data.date();
         var firstTime = appointmentData.withHour(7);
         var lastTime = appointmentData.withHour(18);

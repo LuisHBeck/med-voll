@@ -1,11 +1,14 @@
-package med.voll.api.service.validation;
+package med.voll.api.service.validation.schedule;
 
 import med.voll.api.domain.dtos.appointment.AppointmentScheduleData;
 import med.voll.api.infra.exception.ValidException;
+import org.springframework.stereotype.Component;
 
 import java.time.DayOfWeek;
 
-public class ClinicTimeValidator {
+@Component
+public class ClinicTimeValidator implements AppointmentSchedulingValidator{
+
     public void validate(AppointmentScheduleData data) {
         var appointmentDate = data.date();
         var sunday = appointmentDate.getDayOfWeek().equals(DayOfWeek.SUNDAY);

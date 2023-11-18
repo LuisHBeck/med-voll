@@ -28,9 +28,16 @@ public class ErrorHandler {
 //        return ResponseEntity.badRequest().body(errors);
 //    }
 
+    @ExceptionHandler(ValidException.class)
+    public ResponseEntity handleBusinessRuleError(ValidException exception) {
+        return ResponseEntity.badRequest().body(exception.getMessage());
+    }
+
     private record ValidationErrorData(String field, String message) {
         public ValidationErrorData(FieldError error) {
             this(error.getField(), error.getDefaultMessage());
         }
     }
+
+
 }
