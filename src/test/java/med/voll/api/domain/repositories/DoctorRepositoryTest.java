@@ -48,7 +48,7 @@ class DoctorRepositoryTest {
         var availableDoctor = doctorRepository.chooseRandomDoctorAvailable(Specialty.CARDIOLOGY, nextMondayAt10AM);
         assertThat(availableDoctor).isNull();
     }
-    
+
 
     @Test
     @DisplayName("Should return doctor when the doctor is available on the date")
