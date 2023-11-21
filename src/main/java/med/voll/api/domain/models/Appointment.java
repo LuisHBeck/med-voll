@@ -29,4 +29,10 @@ public class Appointment {
     private Patient patient;
 
     private LocalDateTime date;
+
+    public Appointment(Doctor doctor, Patient patient, LocalDateTime date) {
+        this.doctor = doctor;
+        this.patient = patient;
+        this.date = date;
+    }
 }

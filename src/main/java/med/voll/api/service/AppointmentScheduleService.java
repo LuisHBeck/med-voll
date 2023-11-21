@@ -42,7 +42,7 @@ public class AppointmentScheduleService {
         if(doctor == null) throw new ValidException("No doctor available on this date");
         var patient = patientRepository.getReferenceById(data.patientId());
 
-        var appointment = new Appointment(null, doctor, patient, data.date());
+        var appointment = new Appointment(doctor, patient, data.date());
         appointmentRepository.save(appointment);
 
         return new AppointmentDetailingData(appointment);

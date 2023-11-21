@@ -110,10 +110,7 @@ class DoctorRepositoryTest {
     }
 
     private void scheduleAppointment(Doctor doctor, Patient patient, LocalDateTime date) {
-        em.persist(new Appointment(null,
-                doctor,
-                patient,
-                date));
+        em.persist(new Appointment(doctor, patient, date));
     }
 
 }
